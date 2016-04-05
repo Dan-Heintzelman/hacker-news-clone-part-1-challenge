@@ -51,6 +51,31 @@ get '/posts/:id/edit' do
 
 end
 
+put '/posts/:id' do
+
+  #get params from url
+  @post = Post.find(params[:id]) #define variable to edit
+
+  @post.attributes = params[:post] #assign new attributes
+
+  if @post.save? #saves new post or returns false if unsuccessful
+    redirect "/posts/#{@post.id}" #redirect back to posts index page
+  else
+    erb :'posts/edit' #show edit post view again(potentially displaying errors)
+  end
+
+end
+
+
+get '/posts/:id/edit' do
+
+  #get params from url
+  @post = Post.find(params[:id]) #define intstance variable for view
+
+  erb :'posts/edit' #show edit post view
+
+end
+
 
 
 

@@ -1,4 +1,4 @@
-<h3><%= @post.title %>  <a href="/posts/<%= @post.id %>/comments/new">(Add comment)</a></h3>
+<h3><%= @post.title %>  <a href="/posts/<%= @post.id %>/comments/new">Add comment</a></h3>
   <% if current_user == @post.user %>
   <form method="get" action="/posts/<%= @post.id %>/edit">
     <input type="submit" value="edit">
