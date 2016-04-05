@@ -2,6 +2,10 @@ before '/posts/:id/comments/*' do
   redirect '/session/new' unless logged_in?
 end
 
+before '/posts/new' do
+  redirect '/session/new' unless logged_in?
+end
+
 get "/" do
 	redirect "/posts"
 end
