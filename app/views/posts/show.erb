@@ -1,0 +1,23 @@
+<h3><%= @post.title %>  <a href="/posts/<%= @post.id %>/comments/new">(Add comment)</a></h3>
+  <% if current_user == @post.user %>
+  <form method="get" action="/posts/<%= @post.id %>/edit">
+    <input type="submit" value="edit">
+  </form>
+  <% end %>
+<h4>Post Link:<a href="http://<%= @post.article_url %>"> <%= @post.article_url %></a></h4>
+<ul>
+  <% @comments.each do |comment| %>
+  <li><%= comment.text %></li>
+  <% if current_user == @post.user %>
+  <form method="post" action="/posts/<%= @post.id %>/comments/<%= comment.id %>">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="delete">
+  </form>
+  <form method="get" action="/posts/<%= @post.id %>/comments/<%= comment.id %>/edit">
+    <input type="submit" value="edit">
+  </form>
+  <% end %>
+
+
+  <% end %>
+</ul>

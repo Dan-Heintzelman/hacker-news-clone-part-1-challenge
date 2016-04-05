@@ -1,0 +1,18 @@
+<!-- List all posts -->
+
+<h4>Posts: </h4>
+<ul class="posts">
+<% Post.all.each_with_index do |post, index| %>
+<li><%= index + 1 %>.<a href="/posts/<%= post.id %>"><%= post.title %></a><a class="reference" href="<%= post.article_url %>"><%= post.article_url %></a> </li>
+<li class="subitem">--------<a href="/users/<%= post.user.id %>"><%= post.user.username %></a><a href="/posts/<%= post.id %>"> (<%= post.comments.size %> comments)</a></li>
+
+<% if current_user == post.user %>
+  <form method="post" action="/posts/<%= post.id %>">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="delete">
+  </form>
+<% end %>
+
+
+<% end %>
+</ul>

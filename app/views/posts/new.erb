@@ -1,0 +1,14 @@
+<form method="POST" action="/posts" >
+  <label for="">Create a new post!</label>
+  <input type="text" name="title" placeholder="Title:">
+  <input type="text" name="article_url" placeholder="Link to article:">
+  <input type='submit' value="Submit">
+</form>
+
+<% if @errors %>
+  <ul>
+  <% @errors.each do |error| %>
+   <li><%= error %></li>
+  <% end %>
+  </ul>
+<% end %>

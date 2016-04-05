@@ -1,0 +1,23 @@
+<h2><%= @user.username %>'s profile page</h2>
+
+<h3>Posts submitted:</h3>
+<ul>
+<% @user.posts.each do |post| %>
+  <li><a href="/posts/<%= post.id %>"><%= post.title %></a></li>
+  <form action="/posts/<%= post.id %>" method="post">
+  <div class="delete">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Post">
+  </div>
+  </form>
+
+  <% end %>
+</ul>
+
+<h3>Comments</h3>
+
+<ul>
+<% @user.comments.each do |comment| %>
+  <li><a href="/posts/<%= post.id %>"><%= post.title %></a></li>
+<% end %>
+</ul>
